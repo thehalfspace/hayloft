@@ -67,6 +67,19 @@ Quick reference for common keybindings and commands in your hayloft environment.
 | Kill pane            | `Ctrl-a x`                                 |
 | Kill session         | `exit` or `Ctrl-a :kill-session`           |
 
+### Custom executable `devtmux`
+
+The command `devtmux <session_name>` will create a development terminal split shown below.
+
+┌────────────┬──────────────┐
+│  Editing   │   Terminal   │
+│   (left)   │   (top)      │
+│            ├──────────────┤
+│            │    REPL      │
+│            │   (bottom)   │
+└────────────┴──────────────┘
+
+
 ---
 
 ## 🌎 Zsh

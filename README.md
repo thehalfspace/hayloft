@@ -21,6 +21,9 @@ Clone and bootstrap the hayloft:
 git clone https://github.com/YOURUSERNAME/hayloft.git
 cd hayloft
 just setup
+
+# Optional: add hayloft/bin to PATH for dev tools
+export PATH="$HOME/path/to/hayloft/bin:$PATH"
 ```
 
 You’ll be prompted to:

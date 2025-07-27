@@ -1,30 +1,33 @@
 #!/usr/bin/env bash
 
-# Usage: devtmux <session-name>
-if [[ -z "$1" ]]; then
-  echo "🪚 Usage: devtmux <name>"
+SESSION_NAME="$1"
+
+if [ -z "$SESSION_NAME" ]; then
+  echo "Usage: devtmux <session-name>"
   exit 1
 fi
 
-SESSION="$1"
+# If session already exists, attach to it
+if tmux has-session -t "$SESSION_NAME" 2>/dev/null; then
+  echo "🪚 Session '$SESSION_NAME' already exists. Attaching..."
+  tmux attach-session -t "$SESSION_NAME"
+  exit 0
+fi
 
-# Create new session and window
-tmux new-session -d -s "$SESSION" -n dev
+# Start new session with one window named 'dev'
+tmux new-session -d -s "$SESSION_NAME" -n dev
 
-# Left pane (60%): Editor
-tmux send-keys -t "$SESSION:0.0" "echo '🧺 Left pane: Editing pane'" C-m
+# Split window 'dev' vertically: left editing, right REPL
+tmux split-window -h -t "$SESSION_NAME:dev"
 
-# Split right 40% vertical
-tmux split-window -h -t "$SESSION:0" -p 40
-tmux send-keys -t "$SESSION:0.1" "echo '🐓 Right top: Terminal pane'" C-m
+# Resize left pane to 60%
+tmux resize-pane -t "$SESSION_NAME:dev".0 -x 80
 
-# Split right pane (bottom half)
-tmux split-window -v -t "$SESSION:0.1" -p 50
-tmux send-keys -t "$SESSION:0.2" "echo '🐑 Right bottom: REPL pane'" C-m
+# Send commands to each pane
+tmux send-keys -t "$SESSION_NAME:dev".0 '"Left pane: Editing 🪚"' C-m
+tmux send-keys -t "$SESSION_NAME:dev".1 '"Right pane: REPL 🐍"' C-m
 
-# Select the left (editor) pane by default
-tmux select-pane -t "$SESSION:0.0"
-
-# Attach to session
-tmux attach-session -t "$SESSION"
+# Select editing pane and attach
+tmux select-pane -t "$SESSION_NAME:dev".0
+tmux attach-session -t "$SESSION_NAME"
 
