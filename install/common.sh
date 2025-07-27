@@ -33,17 +33,25 @@ prompt_package_manager() {
 
 # --- Run install script with package manager ---
 run_with_pm() {
-    pkg_name="$1"
-    script="$2"
+    local pkg_name="$1"     # e.g. neovim
+    local script="$2"       # path to install script
+    local bin_name="${3:-$pkg_name}"  # fallback to same name
 
-    if ! command -v "$pkg_name" &>/dev/null; then
-        read -p "🪓 $pkg_name not found. Install it with $PM? (y/n): " confirm
+    # If the binary is not found, try to install
+    if ! command -v "$bin_name" &>/dev/null; then
+        read -p "🪓 $bin_name not found. Install $pkg_name with $PM? (y/n): " confirm
         if [[ "$confirm" =~ ^[Yy]$ ]]; then
             case "$PM" in
                 apt) sudo apt update && sudo apt install -y "$pkg_name" ;;
                 yum) sudo yum install -y "$pkg_name" ;;
                 dnf) sudo dnf install -y "$pkg_name" ;;
-                brew) brew install "$pkg_name" ;;
+                brew)
+                    if brew list "$pkg_name" &>/dev/null; then
+                        log_chicken "$pkg_name is already installed via brew."
+                    else
+                        brew install "$pkg_name"
+                    fi
+                    ;;
                 *) log_error "Unsupported package manager: $PM" && exit 1 ;;
             esac
         else
@@ -51,9 +59,8 @@ run_with_pm() {
             return
         fi
     else
-        log_chicken "$pkg_name is already installed."
+        log_chicken "$bin_name is already installed."
     fi
 
     bash "$script"
 }
-

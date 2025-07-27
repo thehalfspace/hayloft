@@ -4,6 +4,9 @@ set -e
 REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 CONFIG_DIR="$REPO_DIR/config"
 
+# Load emoji log functions
+source "$(dirname "$0")/common.sh"
+
 log_saw "Setting up Neovim... 🪚"
 
 # Ensure config directory exists

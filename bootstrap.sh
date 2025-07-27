@@ -13,14 +13,14 @@ log_rake "Welcome to the hayloft. Time to set up your tools..."
 
 prompt_package_manager
 
-run_with_pm "neovim" "$INSTALL_DIR/nvim.sh"
+run_with_pm "neovim" "$INSTALL_DIR/nvim.sh" "nvim"
 run_with_pm "tmux" "$INSTALL_DIR/tmux.sh"
 
 read -p "Do you want to install and configure zsh? (y/n): " zsh_confirm
 if [[ "$zsh_confirm" =~ ^[Yy]$ ]]; then
     run_with_pm "zsh" "$INSTALL_DIR/zsh.sh"
 else
-    info "Skipping zsh installation."
+   log_duck "Skipping zsh installation. 🦆" 
 fi
 
 bash "$REPO_DIR/symlink.sh"
