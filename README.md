@@ -1,2 +1,133 @@
-# hayloft
-A humble terminal development environment: Neovim, tmux, and tools for local and remote work
+# 🐓 hayloft
+
+A humble, reproducible terminal development environment for local and HPC systems.
+
+**Tools included:**
+
+* 🧠 Neovim (Lua-based, with Tree-sitter + LSP)
+* 🧪 tmux (with TPM + sensible defaults)
+* 🐓 Optional zsh + Oh My Zsh
+* 🌾 Farmer-style aesthetics
+* 🐄 Dotfile linking and config switching
+* 🪚 Justfile-based CLI interface
+
+---
+
+## 🌱 Quick Start
+
+Clone and bootstrap the hayloft:
+
+```bash
+git clone https://github.com/YOURUSERNAME/hayloft.git
+cd hayloft
+just setup
+```
+
+You’ll be prompted to:
+
+* Install and use Neovim (or fallback to Vim)
+* Optionally install zsh (skipped on clusters)
+* Link all configs safely into `~`
+
+---
+
+## 💠 Features
+
+| Feature         | Description                                      |
+| --------------- | ------------------------------------------------ |
+| 🧠 Neovim       | Tree-sitter, LSP, autopairs, telescope           |
+| 🐓 Vim fallback | Still supports `.vimrc` for classic environments |
+| 🧪 tmux         | Pane navigation, mouse, vi-mode, TPM plugins     |
+| 🧆 zsh optional | Only installed on local systems                  |
+| 🌾 Safe linking | Backs up existing dotfiles as `.bak`             |
+| 🪚 Justfile     | `just setup`, `just reset`, `just update`        |
+
+---
+
+## 🏥 Environment Modes
+
+Set `HAYLOFT_ENV` in `hayloft.config`:
+
+```ini
+HAYLOFT_ENV=local    # or "cluster"
+```
+
+| Mode      | Behavior                   |
+| --------- | -------------------------- |
+| `local`   | Full install: zsh, Neovim  |
+| `cluster` | Skips zsh, defaults to Vim |
+
+---
+
+## 🧪 Config Preview
+
+```bash
+config/
+├── vimrc
+├── zshrc
+├── tmux.conf
+└── nvim/
+    ├── init.lua
+    └── lua/
+        ├── options.lua
+        ├── plugins.lua
+        ├── lsp.lua
+        └── keymaps.lua
+```
+
+---
+
+## 🛡️ Prerequisites
+
+You’ll need:
+
+* macOS or Linux
+* `git`, `bash`, and `just` (install via `brew`, `apt`, etc.)
+
+```bash
+# macOS
+brew install just
+
+# Ubuntu
+sudo apt install just
+```
+
+---
+
+## 🩹 Maintenance
+
+| Command       | Purpose                         |
+| ------------- | ------------------------------- |
+| `just setup`  | Install and link everything 🐓  |
+| `just reset`  | Remove dotfiles (with 🩹 emoji) |
+| `just update` | Pull latest from barn 🐖        |
+
+---
+
+## 📝 Cheatsheet
+[Here]() are some shortcuts and commands I use.
+
+## 🐖 Credits & Style
+
+Vibe coded mostly.
+
+Logs include:
+
+* `🧪` organizing
+* `🐓` ready
+* `🧆` skipping
+* `🌾` status
+* `🐖` errors
+
+---
+
+## 📸 Screenshots
+
+
+---
+
+## 📬 Contributing
+
+Feel free to fork and adapt this system for your own hayloft 🧑‍🌾
+PRs with new tools or config sets are welcome!
+
