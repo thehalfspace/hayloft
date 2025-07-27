@@ -13,7 +13,21 @@ log_rake "Welcome to the hayloft. Time to set up your tools..."
 
 prompt_package_manager
 
-run_with_pm "neovim" "$INSTALL_DIR/nvim.sh" "nvim"
+read -p "Do you want to install and use Neovim? (y/n): " use_nvim
+if [[ "$use_nvim" =~ ^[Yy]$ ]]; then
+  run_with_pm "neovim" "$INSTALL_DIR/nvim.sh" "nvim"
+else
+  log_duck "Using Vim fallback config only. Please use :PlugInstall the first time you open vim 🦆"
+  
+  if [[ -f ~/.vimrc || -L ~/.vimrc ]]; then
+    log_duck "Removing existing ~/.vimrc"
+    rm ~/.vimrc
+  fi
+
+  ln -sf "$CONFIG_DIR/vimrc" ~/.vimrc
+  log_chicken "Linked ~/.vimrc ← $CONFIG_DIR/vimrc"
+fi
+
 run_with_pm "tmux" "$INSTALL_DIR/tmux.sh"
 
 read -p "Do you want to install and configure zsh? (y/n): " zsh_confirm

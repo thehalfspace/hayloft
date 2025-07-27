@@ -103,3 +103,6 @@ source $ZSH/oh-my-zsh.sh
 # Set up aliases
 alias oscar="ssh -YJ pthakur8@sshcampus.ccv.brown.edu pthakur8@login010 -t zsh"
 alias oscarbash="ssh -YJ pthakur8@sshcampus.ccv.brown.edu pthakur8@login010"
+alias vim="nvim"
+export EDITOR="nvim"
+export VISUAL="nvim"

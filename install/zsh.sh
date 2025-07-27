@@ -53,3 +53,12 @@ else
   log_chicken "Zsh is already your default shell."
 fi
 
+# 🐓 Ask to launch zsh immediately
+read -p "Do you want to launch zsh now? (y/n): " zsh_now
+if [[ "$zsh_now" =~ ^[Yy]$ ]]; then
+  log_chicken "Launching zsh 🐓"
+  exec zsh
+else
+  log_duck "Staying in current shell. Run 'zsh' manually if needed 🦆"
+fi
+

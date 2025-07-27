@@ -12,7 +12,7 @@ require("lazy").setup({
 
   -- LSP & Completion
   { "neovim/nvim-lspconfig" },
-  { "williamboman/mason.nvim", build = ":MasonUpdate" },
+  { "williamboman/mason.nvim"},
   { "williamboman/mason-lspconfig.nvim" },
 
   -- Git integration

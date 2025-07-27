@@ -14,6 +14,16 @@ log_rake()  { echo -e "🧺 $1"; }
 log_chicken(){ echo -e "🐓 $1"; }
 log_error() { echo -e "🐖 ERROR: $1" >&2; }
 
+# --- Check local or remote system ---
+CONFIG_FILE="$REPO_DIR/hayloft.config"
+if [[ -f "$CONFIG_FILE" ]]; then
+  export HAYLOFT_ENV=$(grep "HAYLOFT_ENV" "$CONFIG_FILE" | cut -d= -f2)
+  log_rake "hayloft mode: $HAYLOFT_ENV"
+else
+  export HAYLOFT_ENV="local"
+  log_duck "No hayloft.config found, assuming local"
+fi
+
 # --- OS + Package Manager Detection ---
 prompt_package_manager() {
     if [[ "$(uname)" == "Darwin" ]]; then
