@@ -9,7 +9,7 @@ CONFIG_DIR="$REPO_DIR/config"
 
 source "$INSTALL_DIR/common.sh"
 
-info "Bootstrapping your development environment..."
+log_rake "Welcome to the hayloft. Time to set up your tools..."
 
 prompt_package_manager
 
