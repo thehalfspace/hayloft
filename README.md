@@ -105,7 +105,7 @@ sudo apt install just
 ---
 
 ## 📝 Cheatsheet
-[Here]() are some shortcuts and commands I use.
+[Here](https://github.com/thehalfspace/hayloft/blob/main/CHEATSHEET.md) are some shortcuts and commands I use.
 
 ## 🐖 Credits & Style
 
