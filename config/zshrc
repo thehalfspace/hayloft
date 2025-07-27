@@ -106,3 +106,5 @@ alias oscarbash="ssh -YJ pthakur8@sshcampus.ccv.brown.edu pthakur8@login010"
 alias vim="nvim"
 export EDITOR="nvim"
 export VISUAL="nvim"
+
+# Add to path for executables

@@ -26,9 +26,14 @@ else
   log_chicken "TPM already installed."
 fi
 
-# Install plugins non-interactively
-log_saw "Installing tmux plugins via TPM..."
-~/.tmux/plugins/tpm/bin/install_plugins
+# Only install plugins if tmux server is running
+if tmux info &>/dev/null; then
+  log_saw "Installing tmux plugins via TPM..."
+  ~/.tmux/plugins/tpm/bin/install_plugins
+else
+  log_duck "Tmux not running — skipping plugin install 🦆"
+  echo "🐓 Run this inside tmux later: prefix + I (default: Ctrl-a I)"
+fi
 
 log_hay "tmux is all set! Start tmux with 🐓 tmux"
 

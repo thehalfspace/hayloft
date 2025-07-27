@@ -37,6 +37,9 @@ else
    log_duck "Skipping zsh installation. 🦆" 
 fi
 
+# mkdir -p "$HOME/bin"
+# ln -sf "$REPO_DIR/bin/devtmux" "$HOME/bin/devtmux"
+
 bash "$REPO_DIR/symlink.sh"
 
 echo "\n✅ Environment setup complete. Launch Neovim or tmux to get started."

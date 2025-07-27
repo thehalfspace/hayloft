@@ -62,3 +62,6 @@ else
   log_duck "Staying in current shell. Run 'zsh' manually if needed 🦆"
 fi
 
+# Add hayloft/bin to PATH if not present
+log_chicken "Please run: export PATH=$PWD/bin:$PATH >> ~/.zshrc"
+
