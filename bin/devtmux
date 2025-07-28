@@ -21,7 +21,7 @@ tmux new-session -d -s "$SESSION_NAME" -n dev
 tmux split-window -h -t "$SESSION_NAME:dev"
 
 # Resize left pane to 60%
-tmux resize-pane -t "$SESSION_NAME:dev".0 -x 80
+tmux resize-pane -t "$SESSION_NAME:dev".0 -x 75
 
 # Send commands to each pane
 tmux send-keys -t "$SESSION_NAME:dev".0 '"Left pane: Editing 🪚"' C-m
