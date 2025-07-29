@@ -3,8 +3,17 @@
 require("lazy").setup({
   -- Visuals & UI
   { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
-  { "nvim-lualine/lualine.nvim" },  -- Modern airline
-  { "nvim-tree/nvim-tree.lua" },    -- NERDTree alternative
+  { "nvim-lualine/lualine.nvim" }, -- Modern airline
+
+  {
+    "nvim-tree/nvim-tree.lua",
+    version = "*",
+    lazy = false, -- 🐄 Eager load to avoid bugs
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    config = function()
+      require("nvim-tree").setup {}
+    end,
+  },
 
   -- Core functionality
   { "nvim-telescope/telescope.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
@@ -12,7 +21,7 @@ require("lazy").setup({
 
   -- LSP & Completion
   { "neovim/nvim-lspconfig" },
-  { "williamboman/mason.nvim"},
+  { "williamboman/mason.nvim" },
   { "williamboman/mason-lspconfig.nvim" },
 
   -- Git integration
