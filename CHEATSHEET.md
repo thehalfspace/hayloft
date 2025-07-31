@@ -6,6 +6,8 @@ Quick reference for common keybindings and commands in your hayloft environment.
 
 ## 📂 Vim / Neovim
 
+**Use `:Lazy sync` or `:Lazy update` in vim to update plugins**
+
 ### Navigation
 
 | Action                   | Shortcut                   |
@@ -29,11 +31,21 @@ Quick reference for common keybindings and commands in your hayloft environment.
 | Undo / Redo      | `u` / `Ctrl-r` |
 
 ### hayloft Custom Mappings
+**Leader Key: `,` (comma)**
+| Shortcut      | Mode   | Action                                 |
+| ------------- | ------ | -------------------------------------- |
+| `;`           | Normal | Enter command mode (`:`) without Shift |
+| `<C-H/J/K/L>` | Normal | Move between vim splits                |
+| `<leader>nn`  | Normal | Toggle file tree (NvimTree) 🌲         |
 
-| Action                        | Shortcut                              |
-| ----------------------------- | ------------------------------------- |
-| Enter command mode (no Shift) | `;` (remapped from `:`)               |
-| Pane navigation               | `Ctrl-h/j/k/l` to move between splits |
+### Vim-Slime Shortcuts
+**Sends to terminal**
+| Shortcut     | Mode   | Action                    |
+| ------------ | ------ | ------------------------- |
+| `<leader>st` | Visual | Send selection to REPL 🐍 |
+| `<leader>st` | Normal | Send paragraph to REPL 🐍 |
+| `<leader>sl` | Normal | Send current line to REPL |
+| `<leader>sc` | Normal | Open Slime config prompt  |
 
 ---
 

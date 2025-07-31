@@ -30,6 +30,9 @@ require("lazy").setup({
   -- Multicursor
   { "mg979/vim-visual-multi" },
 
+  -- Vim-slime plugin
+  { "jpalardy/vim-slime" },
+
   -- Colorscheme fallback (feel free to switch later)
   { "ellisonleao/gruvbox.nvim" },
 })
