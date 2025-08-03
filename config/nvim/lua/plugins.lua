@@ -35,5 +35,10 @@ require("lazy").setup({
 
   -- Colorscheme fallback (feel free to switch later)
   { "ellisonleao/gruvbox.nvim" },
+
+  -- For cpp development
+  { "hrsh7th/nvim-cmp" }, -- Autocompletion
+  { "saadparwaiz1/cmp_lsp" }, -- LSP completions
+  { "mfussenegger/nvim-dap" }, -- Debugger Adapter Protocol
 })
 

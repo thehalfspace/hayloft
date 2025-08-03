@@ -25,3 +25,18 @@ vim.keymap.set("v", "<leader>st", "<Plug>SlimeRegionSend", { desc = "Send select
 vim.keymap.set("n", "<leader>sl", "<Plug>SlimeLineSend", { desc = "Send current line to terminal" })
 vim.keymap.set("n", "<leader>sc", "<Plug>SlimeConfig", { desc = "Slime config prompt" })
 
+-- CPP stuff
+-- Keymaps for Just build/run 🐄
+vim.api.nvim_set_keymap('n', '<leader>b', ':!just build<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>e', ':!just run<CR>', { noremap = true, silent = true })
+
+-- LSP Keybindings for C++ 🌾
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = 'cpp',
+    callback = function()
+        vim.api.nvim_buf_set_keymap(0, 'n', '<leader>d', '<cmd>lua vim.lsp.buf.definition()<CR>', { noremap = true, silent = true })
+        vim.api.nvim_buf_set_keymap(0, 'n', '<leader>r', '<cmd>lua vim.lsp.buf.rename()<CR>', { noremap = true, silent = true })
+        vim.api.nvim_buf_set_keymap(0, 'n', '<leader>h', '<cmd>lua vim.lsp.buf.hover()<CR>', { noremap = true, silent = true })
+    end
+})
+

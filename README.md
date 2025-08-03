@@ -124,6 +124,41 @@ Logs include:
 
 ---
 
+## 📦 Project Justfile Templates
+
+Hayloft includes reusable **Justfile templates** to bootstrap new projects with common workflows. I have only added cpp for now.
+
+### 📁 Template Location
+
+```
+templates/justfiles/
+├── default.justfile    # Minimal base template
+├── cpp.justfile        # Cpp make commands
+├── python.justfile     # Python project workflow
+├── julia.justfile      # Julia scripts and REPL commands
+├── hpc-batch.justfile  # HPC job submission commands
+└── ... more templates
+```
+
+### 🪚 Usage Example
+
+To create a new Justfile in your project directory:
+
+```bash
+just new <template>
+```
+
+For example:
+
+```bash
+just new cpp
+```
+
+This will copy `cpp.justfile` as `./justfile` in your current directory.
+
+---
+
+
 ## 📸 Screenshots
 
 

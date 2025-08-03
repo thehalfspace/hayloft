@@ -20,3 +20,7 @@ update:
     echo "🔄 Fetching latest from the barn..."
     git pull origin main
 
+# Copy justfile to current working folder
+new template_name:
+    cp templates/justfiles/{template_name}.justfile ./justfile
+    @echo "🧺 Justfile template '{{template_name}}' created!"
