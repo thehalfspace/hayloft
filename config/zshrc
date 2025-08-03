@@ -109,3 +109,5 @@ export VISUAL="nvim"
 
 # Add to path for executables
 export PATH="/Users/pthakur8/MyProjects/hayloft/bin:$PATH"
+export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+
