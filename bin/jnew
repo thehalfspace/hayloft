@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# jnew - Bootstrap a new project from hayloft templates 🧺🐓
+# You need to:
+# 1. copy this file to ~/bin/jnew
+# 2. run chmod +x ~bin/jnew
+# 3. If it doesnt exist, do export PATH=$HOME/bin:$PATH
+
+# Auto-detect HAYLOFT_DIR (assumes hayloft is a git repo)
+HAYLOFT_DIR=$(git rev-parse --show-toplevel 2>/dev/null || pwd)
+
+# If not inside hayloft, fall back to a default path
+if [[ ! -d "$HAYLOFT_DIR" || ! -f "$HAYLOFT_DIR/justfile" ]]; then
+    HAYLOFT_DIR=/Users/pthakur8/MyProjects/hayloft  # <-- Change this if hayloft is elsewhere
+fi
+
+# Validate hayloft directory
+if [[ ! -f "$HAYLOFT_DIR/justfile" ]]; then
+    echo "❌ Could not find hayloft Justfile at $HAYLOFT_DIR/justfile"
+    exit 1
+fi
+
+# Template argument (default to 'cpp' if none given)
+TEMPLATE_NAME=${1:-cpp}
+
+# Copy the template recipe
+cp $HAYLOFT_DIR/templates/justfiles/$TEMPLATE_NAME.justfile ./justfile
+

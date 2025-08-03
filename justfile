@@ -20,7 +20,18 @@ update:
     echo "🔄 Fetching latest from the barn..."
     git pull origin main
 
-# Copy justfile to current working folder
-new template_name:
-    cp templates/justfiles/{template_name}.justfile ./justfile
-    @echo "🧺 Justfile template '{{template_name}}' created!"
+# Uninstall the entire thing
+uninstall:
+    @echo "🧹 Starting hayloft uninstallation..."
+    rm -rf ~/.config/nvim
+    rm -f ~/.vimrc
+    rm -f ~/.tmux.conf
+    rm -f ~/.zshrc || true
+    rm -rf ~/.local/share/nvim
+    rm -rf ~/.local/state/nvim
+    rm -rf ~/.cache/nvim
+    rm -rf ~/.tmux/plugins/tpm
+    @echo "🪚 Config files and plugins removed."
+
+    @echo "🐄 Hayloft uninstallation complete. To remove the hayloft folder itself, run:"
+    @echo "rm -rf $(pwd)"

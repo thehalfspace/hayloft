@@ -134,8 +134,6 @@ Hayloft includes reusable **Justfile templates** to bootstrap new projects with 
 templates/justfiles/
 ├── default.justfile    # Minimal base template
 ├── cpp.justfile        # Cpp make commands
-├── python.justfile     # Python project workflow
-├── julia.justfile      # Julia scripts and REPL commands
 ├── hpc-batch.justfile  # HPC job submission commands
 └── ... more templates
 ```
@@ -158,6 +156,10 @@ This will copy `cpp.justfile` as `./justfile` in your current directory.
 
 ---
 
+### Uninstalling
+From inside the hayloft folder, run `just uninstall`
+
+> Note: You need to separately remove the packages installed via package managers, e.g., `brew uninstall just` etc.
 
 ## 📸 Screenshots
 
