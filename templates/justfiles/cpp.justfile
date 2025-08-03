@@ -1,13 +1,23 @@
 # Compiler settings 🪓
-CXX := clang++
-NVCC := nvcc
-CXXFLAGS := -std=c++17 -Wall -Wextra -O2
-CUDAFLAGS := -arch=sm_70 -O2
+CXX := "clang++"
+NVCC := "nvcc"
+CXXFLAGS := "-std=c++17 -Wall -Wextra -O2"
+CUDAFLAGS := "-arch=sm_70 -O2"
 
 # Main source files 🧺
-SRC := main.cpp
-CU_SRC := kernel.cu
-OUT := main
+SRC := "main.cpp"
+CU_SRC := "kernel.cu"
+OUT := "main"
+
+# Initialize project structure 🧺
+init:
+    echo "🌾 Creating project ..."
+    mkdir -p ./src ./include ./build
+    echo "// main.cpp" > ./src/main.cpp
+    echo "// kernel.cu" > ./src/kernel.cu
+    echo "// utils.h" > ./include/utils.h
+    touch ./README.md
+    echo "🐄 Project initialized."
 
 # Build C++ only 🐄
 build:
