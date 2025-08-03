@@ -38,7 +38,7 @@ require("lazy").setup({
 
   -- For cpp development
   { "hrsh7th/nvim-cmp" }, -- Autocompletion
-  { "saadparwaiz1/cmp_lsp" }, -- LSP completions
+  { "hrsh7th/cmp-nvim-lsp" }, -- LSP source for nvim-cmp
   { "mfussenegger/nvim-dap" }, -- Debugger Adapter Protocol
 })
 
