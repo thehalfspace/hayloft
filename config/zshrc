@@ -100,6 +100,12 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# Source bash profile
+if [ -f ~/.bash_profile ]; then
+  source ~/.bash_profile
+fi
+
+
 # Set up aliases
 alias oscar="ssh -YJ pthakur8@sshcampus.ccv.brown.edu pthakur8@login010 -t zsh"
 alias oscarbash="ssh -YJ pthakur8@sshcampus.ccv.brown.edu pthakur8@login010"
