@@ -8,17 +8,17 @@ require("mason-lspconfig").setup({
 })
 
 -- 2. General LSP capabilities
-local lspconfig = require("lspconfig")
-local capabilities = vim.lsp.protocol.make_client_capabilities()
+vim.lsp.config("pyright", {})
+vim.lsp.enable({ "pyright" })
 
--- 3. Setup each language server explicitly
-local servers = { "pyright", "rust_analyzer", "julials", "clangd" }
+vim.lsp.config("rust_analyzer", {})
+vim.lsp.enable({ "rust_analyzer" })
 
-for _, server in ipairs(servers) do
-  lspconfig[server].setup({
-    capabilities = capabilities,
-  })
-end
+vim.lsp.config("julials", {})
+vim.lsp.enable({ "julials" })
+
+vim.lsp.config("clangd", {})
+vim.lsp.enable({ "clangd" })
 
 -- 4. Autoformat on save with clang-format 🪚
 vim.api.nvim_create_autocmd("BufWritePre", {
