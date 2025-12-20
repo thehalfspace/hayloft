@@ -26,6 +26,34 @@ else
   log_chicken "TPM already installed."
 fi
 
+# Cluster-specific setup: add module load to .bashrc
+if [[ "$HAYLOFT_ENV" == "cluster" ]]; then
+  log_hay "🐄 Cluster mode: Adding tmux module load to ~/.bashrc"
+
+  # Check if module load already exists
+  if ! grep -q "module load tmux" ~/.bashrc 2>/dev/null; then
+    # Find the hayloft module loads section and add tmux
+    if grep -q "# hayloft module loads" ~/.bashrc 2>/dev/null; then
+      # Add after the existing module loads section
+      sed -i.bak '/# hayloft module loads/a\
+module load tmux' ~/.bashrc
+      log_chicken "Added 'module load tmux' to ~/.bashrc"
+    else
+      # Create new section
+      cat >> ~/.bashrc << 'EOF'
+
+# hayloft module loads
+module load tmux
+EOF
+      log_chicken "Added 'module load tmux' to ~/.bashrc"
+    fi
+  else
+    log_duck "Module load tmux already in ~/.bashrc"
+  fi
+
+  log_hay "⚠️  Please run 'source ~/.bashrc' or login again to load modules"
+fi
+
 # Only install plugins if tmux server is running
 if tmux info &>/dev/null; then
   log_saw "Installing tmux plugins via TPM..."

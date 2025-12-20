@@ -63,5 +63,15 @@ else
 fi
 
 # Add hayloft/bin to PATH if not present
-log_chicken "Please run: export PATH=$PWD/bin:$PATH >> ~/.zshrc"
+if ! grep -q "hayloft/bin" ~/.zshrc 2>/dev/null; then
+  log_hay "Adding hayloft/bin to PATH in ~/.zshrc"
+  cat >> ~/.zshrc << EOF
+
+# hayloft bin directory
+export PATH="$REPO_DIR/bin:\$PATH"
+EOF
+  log_chicken "Added hayloft/bin to PATH in ~/.zshrc"
+else
+  log_duck "hayloft/bin already in PATH"
+fi
 

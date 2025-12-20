@@ -33,5 +33,11 @@ uninstall:
     rm -rf ~/.tmux/plugins/tpm
     @echo "🪚 Config files and plugins removed."
 
+    @echo "🐄 Removing hayloft module loads from ~/.bashrc (if present)..."
+    @if [ -f ~/.bashrc ]; then \
+        sed -i.hayloft-bak '/# hayloft module loads/,/module load tmux/d' ~/.bashrc && \
+        echo "🐓 Module loads removed from ~/.bashrc (backup: ~/.bashrc.hayloft-bak)"; \
+    fi
+
     @echo "🐄 Hayloft uninstallation complete. To remove the hayloft folder itself, run:"
     @echo "rm -rf $(pwd)"

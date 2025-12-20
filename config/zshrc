@@ -107,13 +107,11 @@ fi
 
 
 # Set up aliases
-alias oscar="ssh -YJ pthakur8@sshcampus.ccv.brown.edu pthakur8@login010 -t zsh"
-alias oscarbash="ssh -YJ pthakur8@sshcampus.ccv.brown.edu pthakur8@login010"
 alias vim="nvim"
 export EDITOR="nvim"
 export VISUAL="nvim"
 
 # Add to path for executables
-export PATH="/Users/pthakur8/MyProjects/hayloft/bin:$PATH"
-export PATH="/opt/homebrew/bin:$PATH"
+# Adjust this path to your hayloft installation location
+# export PATH="$HOME/path/to/hayloft/bin:$PATH"
 

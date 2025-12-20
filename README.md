@@ -42,10 +42,22 @@ Set `HAYLOFT_ENV` in `hayloft.config`:
 HAYLOFT_ENV=local    # or "cluster"
 ```
 
-| Mode      | Behavior                   |
-| --------- | -------------------------- |
-| `local`   | Full install: zsh, Neovim  |
-| `cluster` | Skips zsh, defaults to Vim |
+| Mode      | Behavior                                                        |
+| --------- | --------------------------------------------------------------- |
+| `local`   | Full install: zsh, Neovim, tmux (via package managers)         |
+| `cluster` | HPC mode: Uses Neovim & tmux via modules, skips zsh, uses bash |
+
+### Cluster Mode Details
+
+When `HAYLOFT_ENV=cluster`, hayloft will:
+
+* Skip zsh installation (avoids conflicts with HPC module systems)
+* Configure Neovim with all plugins and LSP support
+* Set up tmux with TPM and custom configurations
+* Add `module load neovim` and `module load tmux` to your `~/.bashrc`
+* Use bash as the shell (compatible with HPC environment modules)
+
+After setup on a cluster, run `source ~/.bashrc` or login again to load the modules.
 
 ---
 
@@ -81,6 +93,25 @@ brew install just
 # Ubuntu
 sudo apt install just
 ```
+
+---
+
+## HPC/Cluster Usage
+
+For HPC environments with environment module systems:
+
+1. Set `HAYLOFT_ENV=cluster` in `hayloft.config`
+2. Clone hayloft to your home directory on the cluster
+3. Run `just setup`
+4. The script will:
+   - Configure Neovim (without installing the binary)
+   - Configure tmux (without installing the binary)
+   - Add module load commands to `~/.bashrc`
+   - Skip zsh to avoid shell conflicts
+5. After setup: `source ~/.bashrc` or logout/login
+6. Verify modules loaded: `module list`
+
+The Neovim and tmux configurations will work seamlessly with cluster-provided modules.
 
 ---
 

@@ -30,5 +30,24 @@ else
   log_chicken "lazy.nvim already installed."
 fi
 
+# Cluster-specific setup: add module load to .bashrc
+if [[ "$HAYLOFT_ENV" == "cluster" ]]; then
+  log_hay "🐄 Cluster mode: Adding module load commands to ~/.bashrc"
+
+  # Check if module load already exists
+  if ! grep -q "# hayloft module loads" ~/.bashrc 2>/dev/null; then
+    cat >> ~/.bashrc << 'EOF'
+
+# hayloft module loads
+module load neovim
+EOF
+    log_chicken "Added 'module load neovim' to ~/.bashrc"
+  else
+    log_duck "Module load commands already in ~/.bashrc"
+  fi
+
+  log_hay "⚠️  Please run 'source ~/.bashrc' or login again to load modules"
+fi
+
 log_hay "Neovim is ready. Launch with 'nvim' 🐓"
 
