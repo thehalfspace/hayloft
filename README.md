@@ -4,16 +4,16 @@ A humble, reproducible terminal development environment for local and HPC system
 
 **Tools included:**
 
-* 🧠 Neovim (Lua-based, with Tree-sitter + LSP)
-* 🧪 tmux (with TPM + sensible defaults)
-* 🐓 Optional zsh + Oh My Zsh
-* 🌾 Farmer-style aesthetics
-* 🐄 Dotfile linking and config switching
-* 🪚 Justfile-based CLI interface
+* Neovim (Lua-based, with Tree-sitter + LSP)
+* tmux (with TPM + sensible defaults)
+* Optional zsh + Oh My Zsh
+* Farmer-style aesthetics
+* Dotfile linking and config switching
+* Justfile-based CLI interface
 
 ---
 
-## 🌱 Quick Start
+## Quick Start
 
 Clone and bootstrap the hayloft:
 
@@ -34,20 +34,7 @@ You’ll be prompted to:
 
 ---
 
-## 💠 Features
-
-| Feature         | Description                                      |
-| --------------- | ------------------------------------------------ |
-| 🧠 Neovim       | Tree-sitter, LSP, autopairs, telescope           |
-| 🐓 Vim fallback | Still supports `.vimrc` for classic environments |
-| 🧪 tmux         | Pane navigation, mouse, vi-mode, TPM plugins     |
-| 🧆 zsh optional | Only installed on local systems                  |
-| 🌾 Safe linking | Backs up existing dotfiles as `.bak`             |
-| 🪚 Justfile     | `just setup`, `just reset`, `just update`        |
-
----
-
-## 🏥 Environment Modes
+## Environment Modes
 
 Set `HAYLOFT_ENV` in `hayloft.config`:
 
@@ -62,7 +49,7 @@ HAYLOFT_ENV=local    # or "cluster"
 
 ---
 
-## 🧪 Config Preview
+## Config Preview
 
 ```bash
 config/
@@ -80,7 +67,7 @@ config/
 
 ---
 
-## 🛡️ Prerequisites
+## Prerequisites
 
 You’ll need:
 
@@ -97,7 +84,7 @@ sudo apt install just
 
 ---
 
-## 🩹 Maintenance
+## Maintenance
 
 | Command       | Purpose                         |
 | ------------- | ------------------------------- |
@@ -124,7 +111,7 @@ Logs include:
 
 ---
 
-## 📦 Project Justfile Templates
+## Project Justfile Templates (WIP: may or may not be completed)
 
 Hayloft includes reusable **Justfile templates** to bootstrap new projects with common workflows. I have only added cpp for now.
 
