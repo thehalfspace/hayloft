@@ -14,8 +14,8 @@ module load tmux
 
 # --- hayloft bin on PATH ---
 # Set HAYLOFT_DIR to wherever you cloned the repo
-HAYLOFT_DIR="${HAYLOFT_DIR:-$HOME/hayloft}"
-export PATH="$HAYLOFT_DIR/bin:$PATH"
+# HAYLOFT_DIR="${HAYLOFT_DIR:-$HOME/hayloft}"
+export PATH="/oscar/home/pthakur8/mySoftwares/hayloft/bin:$PATH"
 
 # --- Tool aliases ---
 alias vim="nvim"
@@ -23,8 +23,6 @@ export EDITOR="nvim"
 export VISUAL="nvim"
 
 # --- User-specified aliases ---
-# Fill these in once you have the install paths:
-# alias just="/path/to/just"
 # alias opencode="/path/to/opencode"
 
 # --- Launch zsh with cluster config ---
