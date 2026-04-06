@@ -9,10 +9,11 @@ source "$(dirname "$0")/common.sh"
 log_saw "Installing Zsh... 🪚"
 
 # Check if zsh is already installed
-if ! command -v zsh &> /dev/null; then
+if [[ "$HAYLOFT_ENV" == "cluster" ]]; then
+  log_chicken "Cluster mode: zsh assumed available, skipping binary install."
+elif ! command -v zsh &> /dev/null; then
   case "$PM" in
     apt) sudo apt update && sudo apt install -y zsh ;;
-    yum) sudo yum install -y zsh ;;
     dnf) sudo dnf install -y zsh ;;
     brew) brew install zsh ;;
     *) log_error "Unsupported package manager: $PM" && exit 1 ;;

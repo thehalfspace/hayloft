@@ -27,8 +27,34 @@ link_dotfile() {
 
 # Link dotfiles
 link_dotfile "vimrc"
-link_dotfile "zshrc"
 link_dotfile "tmux.conf"
+
+# Link env-specific zshrc
+if [[ "$HAYLOFT_ENV" == "cluster" ]]; then
+  log_hay "Linking cluster zshrc"
+  if [[ -L "$HOME/.zshrc" || -f "$HOME/.zshrc" ]]; then
+    log_duck "Removing existing ~/.zshrc"
+    rm "$HOME/.zshrc"
+  fi
+  ln -s "$CONFIG_DIR/zshrc.cluster" "$HOME/.zshrc"
+  log_chicken "Linked ~/.zshrc ← $CONFIG_DIR/zshrc.cluster"
+
+  # Link myenvrc
+  if [[ -L "$HOME/.myenvrc" || -f "$HOME/.myenvrc" ]]; then
+    log_duck "Removing existing ~/.myenvrc"
+    rm "$HOME/.myenvrc"
+  fi
+  ln -s "$CONFIG_DIR/myenvrc" "$HOME/.myenvrc"
+  log_chicken "Linked ~/.myenvrc ← $CONFIG_DIR/myenvrc"
+else
+  log_hay "Linking local zshrc"
+  if [[ -L "$HOME/.zshrc" || -f "$HOME/.zshrc" ]]; then
+    log_duck "Removing existing ~/.zshrc"
+    rm "$HOME/.zshrc"
+  fi
+  ln -s "$CONFIG_DIR/zshrc.local" "$HOME/.zshrc"
+  log_chicken "Linked ~/.zshrc ← $CONFIG_DIR/zshrc.local"
+fi
 
 log_hay "All config files linked successfully! 🌾"
 

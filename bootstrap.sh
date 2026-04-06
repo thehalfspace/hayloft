@@ -24,8 +24,8 @@ if [[ "$HAYLOFT_ENV" == "cluster" ]]; then
   # Setup tmux via modules
   bash "$INSTALL_DIR/tmux.sh"
 
-  # Skip zsh on clusters (conflicts with module system)
-  log_duck "Skipping zsh on cluster (module system uses bash) 🦆"
+  # Install zsh config on cluster (sourced via myenvrc)
+  run_with_pm "zsh" "$INSTALL_DIR/zsh.sh"
 
   # Add hayloft/bin to PATH in .bashrc for cluster mode
   if ! grep -q "hayloft/bin" ~/.bashrc 2>/dev/null; then

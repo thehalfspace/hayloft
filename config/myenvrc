@@ -1,0 +1,32 @@
+# hayloft cluster environment activator
+#
+# Source this manually to activate your full dev environment:
+#   source ~/.myenvrc
+#
+# To persist across logins, add to ~/.bashrc:
+#   [ -f ~/.myenvrc ] && source ~/.myenvrc
+#
+# To deactivate: open a new shell (or `exec bash`) without sourcing this.
+
+# --- Module loads ---
+module load neovim
+module load tmux
+
+# --- hayloft bin on PATH ---
+# Set HAYLOFT_DIR to wherever you cloned the repo
+HAYLOFT_DIR="${HAYLOFT_DIR:-$HOME/hayloft}"
+export PATH="$HAYLOFT_DIR/bin:$PATH"
+
+# --- Tool aliases ---
+alias vim="nvim"
+export EDITOR="nvim"
+export VISUAL="nvim"
+
+# --- User-specified aliases ---
+# Fill these in once you have the install paths:
+# alias just="/path/to/just"
+# alias opencode="/path/to/opencode"
+
+# --- Launch zsh with cluster config ---
+# Must be last — replaces the current bash process with zsh
+exec zsh

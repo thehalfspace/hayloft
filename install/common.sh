@@ -49,11 +49,14 @@ run_with_pm() {
 
     # If the binary is not found, try to install
     if ! command -v "$bin_name" &>/dev/null; then
+        if [[ "$HAYLOFT_ENV" == "cluster" ]]; then
+            log_duck "$bin_name not found. On cluster, use module loads (e.g. 'module load $pkg_name'). Skipping install."
+            return
+        fi
         read -p "🪓 $bin_name not found. Install $pkg_name with $PM? (y/n): " confirm
         if [[ "$confirm" =~ ^[Yy]$ ]]; then
             case "$PM" in
                 apt) sudo apt update && sudo apt install -y "$pkg_name" ;;
-                yum) sudo yum install -y "$pkg_name" ;;
                 dnf) sudo dnf install -y "$pkg_name" ;;
                 brew)
                     if brew list "$pkg_name" &>/dev/null; then
