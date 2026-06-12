@@ -17,6 +17,12 @@ module load tmux
 # HAYLOFT_DIR="${HAYLOFT_DIR:-$HOME/hayloft}"
 export PATH="/oscar/home/pthakur8/mySoftwares/hayloft/bin:$PATH"
 
+# opencode
+export PATH=/users/pthakur8/.opencode/bin:$PATH
+
+# Ollama models
+export OLLAMA_MODELS=/oscar/data/shared/ollama_models
+
 # --- Tool aliases ---
 alias vim="nvim"
 export EDITOR="nvim"
