@@ -105,6 +105,18 @@ if [ -f ~/.bash_profile ]; then
   source ~/.bash_profile
 fi
 
+# override robbyrussell prompt to include user@hostname
+function precmd() {
+  local user_host="%F{cyan}%n%f@%F{blue}%m%f "
+  PROMPT="${user_host}%{$fg_bold[cyan]%}❮%{$fg_bold[green]%}❯%{$reset_color%} "
+  
+  # Re-inject the original robbyrussell Git prompt status
+  if [[ -n $(git_prompt_info) ]]; then
+    PROMPT+="$(git_prompt_info) "
+  fi
+}
+
+
 
 # Set up aliases
 alias vim="nvim"
