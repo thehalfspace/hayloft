@@ -127,3 +127,6 @@ alias claude-mem='/Users/pthakur8/.bun/bin/bun "/Users/pthakur8/.claude/plugins/
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 export PATH="/Applications/MATLAB_R2024b.app/bin:$PATH"
+
+# opencode
+export PATH=/Users/pthakur8/.opencode/bin:$PATH
